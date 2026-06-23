@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useSearchParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -78,6 +78,7 @@ function GamesRoute() {
     <ZmathGamesPage
       initialCategory={ initialCategory }
       onGoHome={ () => navigate('/') }
+      onGoProfile={ () => navigate('/profile') }
       onGameClick={ (game) => navigate(`/game/${game.conceptKey}`) }
       onCategoryChange={ (cat) => navigate(`/games${cat !== 'all' ? `?cat=${cat}` : ''}`, { replace: true }) }
     />
@@ -89,11 +90,19 @@ function ProfileRoute() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const initialTab = searchParams.get('tab') ?? 'solved';
+
+  const handleNavigate = (page) => {
+    if (page === 'home') navigate('/');
+    else if (page === 'elementary5') navigate('/games');
+    else if (page === 'profile') navigate('/profile');
+    else navigate(`/${page}`);
+  };
+
   return (
     <ZmathProfilePage
       initialTab={ initialTab }
       onTabChange={ (tab) => navigate(`/profile?tab=${tab}`, { replace: true }) }
-      onNavigate={ (page) => navigate(page === 'home' ? '/' : `/${page}`) }
+      onNavigate={ handleNavigate }
       onGameClick={ (key) => navigate(`/game/${key}`) }
       onElementary6={ () => window.alert('초등 6학년 콘텐츠는 준비중입니다.') }
     />
@@ -120,6 +129,7 @@ function AppRoutes() {
       <Route path="/games" element={<GamesRoute />} />
       <Route path="/profile" element={<ProfileRoute />} />
       <Route path="/game/fraction-add" element={<FractionGameRoute />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
