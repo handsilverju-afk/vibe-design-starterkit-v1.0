@@ -58,7 +58,7 @@ export function InlineObject({
         cursor: hover ? 'pointer' : 'inherit',
         '&:hover': hover ? {
           transform: 'scale(1.1) rotate(3deg)',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          boxShadow: '0 4px 12px rgba(26,26,26,0.15)',
         } : {},
         '& > img, & > svg': {
           width: '100%',

@@ -13,6 +13,9 @@
     "generate-rules": "node scripts/generate-rules.js"
   },
   "dependencies": {
+    "@dicebear/core": "^9.4.2",
+    "@dicebear/notionists": "^9.4.2",
+    "@dicebear/open-peeps": "^9.4.2",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fontsource-variable/material-symbols-outlined": "^5.2.30",

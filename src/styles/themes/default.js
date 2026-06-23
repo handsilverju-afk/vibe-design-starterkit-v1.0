@@ -12,7 +12,7 @@
  */
 
 import { createTheme } from '@mui/material/styles';
-import { blueGrey, grey } from '@mui/material/colors';
+import { blueGrey } from '@mui/material/colors';
 
 // ============================================================
 // 1. Color Tokens (색상 토큰)
@@ -85,18 +85,18 @@ const palette = {
     focus: 'rgba(0, 0, 0, 0.12)',
   },
 
-  // Grey 스케일
+  // Grey 스케일 — #0E0F0F 기반 커스텀 스케일
   grey: {
-    50: grey[50],
-    100: grey[100],
-    200: grey[200],
-    300: grey[300],
-    400: grey[400],
-    500: grey[500],
-    600: grey[600],
-    700: grey[700],
-    800: grey[800],
-    900: grey[900],
+    50:  '#F5F6F6',
+    100: '#E4E4E4',
+    200: '#C9CACA',
+    300: '#AFAFAF',
+    400: '#949595',
+    500: '#797A7A',
+    600: '#5E5F5F',
+    700: '#444545',
+    800: '#292A2A',
+    900: '#0E0F0F',
   },
 };
 

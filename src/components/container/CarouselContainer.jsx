@@ -162,7 +162,6 @@ const CarouselContainer = forwardRef(function CarouselContainer({
     backgroundColor: 'background.paper',
     border: '1px solid',
     borderColor: 'divider',
-    borderRadius: 0,
     p: { xs: 0.75, sm: 1 },
     minWidth: 'auto',
     color: isDisabled ? 'text.disabled' : 'text.primary',

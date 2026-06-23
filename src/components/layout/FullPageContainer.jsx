@@ -112,7 +112,7 @@ export function FullPageContainer({
 
     let overlayColor;
     if (typeof overlay === 'number') {
-      overlayColor = `rgba(0, 0, 0, ${overlay})`;
+      overlayColor = `rgba(26, 26, 26, ${overlay})`;
     } else {
       overlayColor = overlay;
     }

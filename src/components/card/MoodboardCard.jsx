@@ -252,8 +252,8 @@ export function MoodboardCard({
             }}
             sx={{
               bgcolor: 'background.paper',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              '&:hover': { bgcolor: 'white' },
+              boxShadow: 2,
+              '&:hover': { bgcolor: 'background.paper' },
             }}
           >
             <EditOutlinedIcon fontSize="small" />
@@ -268,10 +268,10 @@ export function MoodboardCard({
             }}
             sx={{
               bgcolor: 'background.paper',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+              boxShadow: 2,
               '&:hover': {
                 bgcolor: 'error.light',
-                color: 'white',
+                color: 'common.white',
               },
             }}
           >
@@ -289,14 +289,14 @@ export function MoodboardCard({
           px: 1.5,
           py: 0.5,
           borderRadius: 1,
-          bgcolor: 'rgba(0,0,0,0.6)',
+          bgcolor: 'rgba(26,26,26,0.6)',
           backdropFilter: 'blur(4px)',
         }}
       >
         <Typography
           variant="caption"
           sx={{
-            color: 'white',
+            color: 'common.white',
             fontWeight: 600,
             fontSize: '0.7rem',
           }}
@@ -323,7 +323,7 @@ export function MoodboardCard({
         border: 'none',
         '&:hover': {
           transform: 'translateY(-4px)',
-          boxShadow: '0 12px 24px -8px rgba(0,0,0,0.15)',
+          boxShadow: '0 12px 24px -8px rgba(26,26,26,0.15)',
           '& .moodboard-actions': {
             opacity: 1,
           },

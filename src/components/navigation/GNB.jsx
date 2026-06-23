@@ -164,9 +164,6 @@ const GNB = forwardRef(function GNB({
 
         {/* Right: Navigation */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          {/* Persistent (always visible) */}
-          {persistent}
-
           {/* Desktop: Show navContent */}
           {!isMobile && navContent}
 
@@ -181,6 +178,9 @@ const GNB = forwardRef(function GNB({
               <MenuIcon />
             </IconButton>
           )}
+
+          {/* Persistent (always visible, rightmost) */}
+          {persistent}
         </Box>
       </Box>
 

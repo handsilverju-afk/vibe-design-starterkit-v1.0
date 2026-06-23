@@ -9,15 +9,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useTheme } from '@mui/material/styles';
 import {
-  blue,
-  blueGrey,
-  grey,
-  red,
-  orange,
-  green,
-  lightBlue,
-} from '@mui/material/colors';
-import {
   DocumentTitle,
   PageContainer,
   SectionTitle,
@@ -342,68 +333,85 @@ hover 시 error.dark로 어두워지게 해줘."` }
   },
 };
 
-/** 1. Color Palette - 원시 색상 */
+/** 브랜드 액센트 색상 블록 */
+const AccentBlock = ({ name, color, token }) => (
+  <Box sx={ { display: 'flex', flexDirection: 'column', gap: 0.5 } }>
+    <Box
+      sx={ {
+        width: 100,
+        height: 100,
+        backgroundColor: color,
+        borderRadius: 1,
+        border: '1px solid rgba(26,26,26,0.08)',
+      } }
+    />
+    <Typography variant="caption" sx={ { fontWeight: 700, fontSize: 12 } }>{ name }</Typography>
+    <Typography variant="caption" sx={ { fontFamily: 'monospace', fontSize: 10, color: 'text.secondary' } }>
+      { token }
+    </Typography>
+    <Typography variant="caption" sx={ { fontFamily: 'monospace', fontSize: 10, color: 'text.secondary' } }>
+      { color }
+    </Typography>
+  </Box>
+);
+
+/** 1. Color Palette - zMath 브랜드 팔레트 */
 export const Palette = {
   name: '1. Color Palette',
-  render: () => (
-    <>
-      <DocumentTitle
-        title="Color Palette"
-        status="Available"
-        note="MUI default color palette"
-        brandName="Design System"
-        systemName="Starter Kit"
-        version="1.0"
-      />
-      <PageContainer>
-        <Typography variant="h4" sx={ { fontWeight: 700, mb: 1 } }>
-          Color Palette (원시 색상)
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={ { mb: 4 } }>
-          MUI에서 제공하는 기본 색상 팔레트입니다. 이 색상들을 조합하여 테마를 구성합니다.
-        </Typography>
+  render: () => {
+    const theme = useTheme();
+    const zmath = theme.palette.zmath;
 
-        <Divider sx={ { mb: 4 } } />
+    return (
+      <>
+        <DocumentTitle
+          title="Color Palette"
+          status="Available"
+          note="zMath brand color palette"
+          brandName="zMath"
+          systemName="Starter Kit"
+          version="1.0"
+        />
+        <PageContainer>
+          <Typography variant="h4" sx={ { fontWeight: 700, mb: 1 } }>
+            Color Palette
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={ { mb: 4 } }>
+            zMath 브랜드 색상 팔레트입니다. palette.zmath 네임스페이스에서 접근합니다.
+          </Typography>
 
-        <PaletteScale name="Blue" colorObj={ blue } description="Primary 색상의 기반" />
-        <PaletteScale name="Blue Grey" colorObj={ blueGrey } description="Secondary 색상의 기반" />
-        <PaletteScale name="Grey" colorObj={ grey } description="텍스트, 배경, 보더" />
-        <PaletteScale name="Red" colorObj={ red } description="Error 상태" />
-        <PaletteScale name="Orange" colorObj={ orange } description="Warning 상태" />
-        <PaletteScale name="Green" colorObj={ green } description="Success 상태" />
-        <PaletteScale name="Light Blue" colorObj={ lightBlue } description="Info 상태" />
+          <Divider sx={ { mb: 4 } } />
 
-        <SectionTitle title="명도 가이드" />
+          <SectionTitle title="Accent Colors" description="palette.zmath.accent — 주요 브랜드 액센트" />
+          <Box sx={ { display: 'flex', flexWrap: 'wrap', gap: 3, mb: 6 } }>
+            <AccentBlock name="Orange" color={ zmath.accent.orange } token="zmath.accent.orange" />
+            <AccentBlock name="Yellow" color={ zmath.accent.yellow } token="zmath.accent.yellow" />
+          </Box>
 
-        <TableContainer>
-          <Table size="small">
-            <TableBody>
-              <TableRow>
-                <TableCell sx={ { fontWeight: 600, width: '20%' } }>50-100</TableCell>
-                <TableCell>매우 밝음 - 배경색</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell sx={ { fontWeight: 600 } }>200-300</TableCell>
-                <TableCell>밝음 - hover, 보더</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell sx={ { fontWeight: 600 } }>400-500</TableCell>
-                <TableCell>기본 - main 색상</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell sx={ { fontWeight: 600 } }>600-700</TableCell>
-                <TableCell>어두움 - active, dark</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell sx={ { fontWeight: 600 } }>800-900</TableCell>
-                <TableCell>매우 어두움 - 텍스트</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </PageContainer>
-    </>
-  ),
+          <SectionTitle title="Category Colors" description="palette.zmath.categoryColors — 수학 카테고리별 색상" />
+          <Box sx={ { display: 'flex', flexWrap: 'wrap', gap: 3, mb: 6 } }>
+            <AccentBlock name="Arithmetic" color={ zmath.categoryColors.arithmetic } token="categoryColors.arithmetic" />
+            <AccentBlock name="Function" color={ zmath.categoryColors.function } token="categoryColors.function" />
+            <AccentBlock name="Geometry" color={ zmath.categoryColors.geometry } token="categoryColors.geometry" />
+            <AccentBlock name="Statistics" color={ zmath.categoryColors.statistics } token="categoryColors.statistics" />
+            <AccentBlock name="Columbia Blue" color={ zmath.categoryColors.columbiaBlue } token="categoryColors.columbiaBlue" />
+          </Box>
+
+          <SectionTitle title="Surface Colors" description="배경 및 서피스 색상" />
+          <Box sx={ { display: 'flex', flexWrap: 'wrap', gap: 3, mb: 6 } }>
+            <AccentBlock name="Background" color={ theme.palette.background.default } token="background.default (#FAFAF9)" />
+            <AccentBlock name="Paper" color={ theme.palette.background.paper } token="background.paper (#FFFFFF)" />
+            <AccentBlock name="Surface Alt" color={ zmath.surfaceAlt } token="zmath.surfaceAlt" />
+            <AccentBlock name="Near Black" color={ zmath.nearBlack } token="zmath.nearBlack (#0E0F0F)" />
+            <AccentBlock name="Off White" color={ zmath.offWhite } token="zmath.offWhite (#FAFAF9)" />
+          </Box>
+
+          <SectionTitle title="Grey Scale" description="텍스트, 배경, 보더에 사용되는 Grey 스케일" />
+          <PaletteScale name="Grey" colorObj={ theme.palette.grey } description="grey.50 ~ grey.900" />
+        </PageContainer>
+      </>
+    );
+  },
 };
 
 /** 2. Semantic Tokens - 역할별 색상 */

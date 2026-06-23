@@ -217,10 +217,10 @@ export function FileDropzone({
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              bgcolor: 'rgba(0, 0, 0, 0.7)',
+              bgcolor: 'rgba(26, 26, 26, 0.7)',
             }}
           >
-            <Typography variant="body2" sx={{ color: 'white', mb: 2 }}>
+            <Typography variant="body2" sx={{ color: 'common.white', mb: 2 }}>
               Uploading... {uploadProgress}%
             </Typography>
             <LinearProgress
@@ -242,7 +242,7 @@ export function FileDropzone({
               alignItems: 'center',
               gap: 0.5,
               bgcolor: 'success.main',
-              color: 'white',
+              color: 'common.white',
               px: 1.5,
               py: 0.5,
               borderRadius: 1,
@@ -264,13 +264,13 @@ export function FileDropzone({
               left: 0,
               right: 0,
               p: 1.5,
-              background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+              background: 'linear-gradient(transparent, rgba(26,26,26,0.8))',
             }}
           >
             <Typography
               variant="body2"
               sx={{
-                color: 'white',
+                color: 'common.white',
                 fontWeight: 500,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
@@ -294,8 +294,8 @@ export function FileDropzone({
               position: 'absolute',
               top: 8,
               right: 8,
-              bgcolor: 'rgba(0, 0, 0, 0.6)',
-              color: 'white',
+              bgcolor: 'rgba(26, 26, 26, 0.6)',
+              color: 'common.white',
               '&:hover': {
                 bgcolor: 'error.main',
               },

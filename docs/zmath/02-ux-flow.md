@@ -105,12 +105,40 @@ zMath
 | 엔티티 | 주요 필드 | 관계 |
 |--------|----------|------|
 | Concept | id, category, title, description, difficulty | 1 → N Game |
-| Game | id, conceptId, type(drag/click/slider), steps[], | N → 1 Concept |
-| Challenge | id, title, level, period, questionIds[] | N → M Question |
+| Game | id, conceptId, **conceptKey**, type(drag/click/slider), steps[], **views**, **likes**, **lastPlayedAt**, **isPlayed**, **userId** | N → 1 Concept |
+| Challenge | id, title, level, period, questionIds[], participants, **correctRate**, **isAttempted**, **isCorrect**, **recommendReason** | N → M Question |
 | Question | id, conceptId, prompt, options, answer | — |
 | RankEntry | sessionId, nickname, score, streak, challengeId | N → 1 Challenge |
 
 > 로그인 없음 — sessionId는 브라우저 세션 임시 ID
+
+### 게임 카드 인게이지먼트 필드 (Game)
+
+| 필드 | 타입 | 설명 |
+|------|------|------|
+| `views` | number | 누적 조회수. 카드 클릭(게임 진입) 횟수 합산 |
+| `likes` | number | 좋아요 수. 세션별 토글 (로그인 없음, sessionId 기반) |
+| `lastPlayedAt` | ISO 8601 string \| null | 현재 세션에서 마지막으로 플레이한 시각. 미플레이 시 null |
+
+**표시 규칙**
+- `views`: `1.2k` 포맷 (1000 미만 → 숫자, 이상 → 소수점 1자리 + k)
+- `likes`: 좋아요 아이콘 버튼(토글). 카드 클릭과 별도 이벤트 (`onLike`, `e.stopPropagation`)
+- `lastPlayedAt`: 상대 시각 — "N분 전" / "오늘 HH:MM" / "어제" / "N일 전"
+
+### 챌린지 카드 추천 필드 (Challenge)
+
+| 필드 | 타입 | 설명 |
+|------|------|------|
+| `correctRate` | number (0–100) | 전체 정답률. "N명 중 M명만 맞혔어요"로 서사 표현 |
+| `isAttempted` | boolean | 현재 세션 사용자가 도전했는지 여부 |
+| `isCorrect` | boolean | 도전 후 정답 여부 (`isAttempted=true`일 때만 유효) |
+| `recommendReason` | string \| null | 추천 이유 — 공부한 개념 기반 ("약수와 배수를 공부했다면") |
+
+**추천 섹션 원칙**
+- 홈 챌린지 섹션 타이틀: **"내게 맞는 챌린지"** (진행 중이 아닌 추천 기반)
+- 사용자가 플레이한 게임의 개념과 카테고리 연결
+- 내 정답률과 유사한 난이도 우선 노출
+- `recommendReason`으로 추천 근거를 카드에 직접 명시
 
 ---
 

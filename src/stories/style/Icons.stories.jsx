@@ -140,7 +140,7 @@ export const Default = {
 		size: 48,
 		fill: false,
 		weight: 400,
-		color: "#0000FF",
+		color: "#FF5533",
 	},
 };
 
@@ -151,12 +151,12 @@ export const FillUsage = {
 	},
 	render: () => {
 		const fillExamples = [
-			{ icon: "favorite", label: "Like", activeColor: "#e91e63" },
-			{ icon: "bookmark", label: "Bookmark", activeColor: "#1976d2" },
-			{ icon: "star", label: "Favorite", activeColor: "#ffc107" },
-			{ icon: "thumb_up", label: "Recommend", activeColor: "#0000FF" },
-			{ icon: "check_circle", label: "Complete", activeColor: "#2e7d32" },
-			{ icon: "visibility", label: "Visible", activeColor: "#263238" },
+			{ icon: "favorite", label: "Like", activeColor: "#FF8FA3" },
+			{ icon: "bookmark", label: "Bookmark", activeColor: "#FF5533" },
+			{ icon: "star", label: "Favorite", activeColor: "#FFE000" },
+			{ icon: "thumb_up", label: "Recommend", activeColor: "#FF5533" },
+			{ icon: "check_circle", label: "Complete", activeColor: "#00C853" },
+			{ icon: "visibility", label: "Visible", activeColor: "#1A1A1A" },
 		];
 
 		return (

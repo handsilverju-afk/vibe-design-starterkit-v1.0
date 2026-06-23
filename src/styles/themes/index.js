@@ -6,10 +6,12 @@
  */
 
 import defaultTheme from './default.js';
+import zmathTheme from './zmath.js';
 
 /** 사용 가능한 테마 목록 */
 export const themes = {
   default: defaultTheme,
+  zmath: zmathTheme,
 };
 
 /** 테마 메타데이터 */
@@ -17,6 +19,11 @@ export const themeMeta = {
   default: {
     name: 'Default',
     description: '프로젝트 기본 테마',
+    mode: 'light',
+  },
+  zmath: {
+    name: 'zMath',
+    description: 'Neo-Brutalism 기반 Gen-Z 수학 학습 앱 테마',
     mode: 'light',
   },
 };
@@ -38,5 +45,5 @@ export const getTheme = (themeName) => {
  */
 export const getThemeNames = () => Object.keys(themes);
 
-export { defaultTheme };
+export { defaultTheme, zmathTheme };
 export default themes;

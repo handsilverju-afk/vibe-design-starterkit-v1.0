@@ -77,7 +77,7 @@ export function ImageCard({
         sx={{
           bgcolor: 'background.paper',
           boxShadow: 1,
-          '&:hover': { bgcolor: 'white' },
+          '&:hover': { bgcolor: 'background.paper' },
         }}
       >
         <FavoriteBorderIcon fontSize="small" />

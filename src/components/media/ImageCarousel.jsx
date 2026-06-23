@@ -311,7 +311,7 @@ export function ImageCarousel({
               backgroundColor: 'rgba(255,255,255,0.9)',
               color: 'grey.800',
               zIndex: 2,
-              '&:hover': { backgroundColor: 'white' },
+              '&:hover': { backgroundColor: 'common.white' },
               '&:disabled': { opacity: 0.3 },
             } }
           >
@@ -328,7 +328,7 @@ export function ImageCarousel({
               backgroundColor: 'rgba(255,255,255,0.9)',
               color: 'grey.800',
               zIndex: 2,
-              '&:hover': { backgroundColor: 'white' },
+              '&:hover': { backgroundColor: 'common.white' },
               '&:disabled': { opacity: 0.3 },
             } }
           >

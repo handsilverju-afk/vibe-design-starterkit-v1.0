@@ -5,6 +5,61 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Indicator } from './Indicator';
 
+export default {
+  title: 'Common/Indicator',
+  component: Indicator,
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+    docs: {},
+  },
+  argTypes: {
+    total: {
+      control: { type: 'number', min: 1, max: 20 },
+      description: 'Total number of items',
+    },
+    current: {
+      control: { type: 'number', min: 0, max: 19 },
+      description: 'Current active index (0-based)',
+    },
+    variant: {
+      control: 'select',
+      options: ['dot', 'line', 'dash', 'fraction', 'progress'],
+      description: 'Visual style of the indicator',
+    },
+    direction: {
+      control: 'radio',
+      options: ['horizontal', 'vertical'],
+      description: 'Layout direction',
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+      description: 'Size of indicator elements',
+    },
+    activeColor: {
+      control: 'color',
+      description: 'Color for active state',
+    },
+    inactiveColor: {
+      control: 'color',
+      description: 'Color for inactive state',
+    },
+    gap: {
+      control: { type: 'number', min: 0.5, max: 3, step: 0.5 },
+      description: 'Spacing between indicator items',
+    },
+    hasAnimation: {
+      control: 'boolean',
+      description: 'Enable/disable animations',
+    },
+    hasHoverEffect: {
+      control: 'boolean',
+      description: 'Enable/disable hover effects',
+    },
+  },
+};
+
 /**
  * Story 컴포넌트: AllVariants 데모
  */
@@ -152,77 +207,6 @@ function InteractiveDemo() {
     </Box>
   );
 }
-
-export default {
-  title: 'Common/Indicator',
-  component: Indicator,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: `
-## Indicator
-
-A visual indicator component for carousels, sliders, and pagination.
-Supports multiple visual styles (dot, line, dash, fraction, progress) with smooth animations.
-
-### Features
-- Multiple variants: dot, line, dash, fraction, progress
-- Horizontal and vertical orientation
-- Keyboard navigation support
-- Accessible with ARIA attributes
-- Customizable colors and sizes
-        `,
-      },
-    },
-  },
-  argTypes: {
-    total: {
-      control: { type: 'number', min: 1, max: 20 },
-      description: 'Total number of items',
-    },
-    current: {
-      control: { type: 'number', min: 0, max: 19 },
-      description: 'Current active index (0-based)',
-    },
-    variant: {
-      control: 'select',
-      options: ['dot', 'line', 'dash', 'fraction', 'progress'],
-      description: 'Visual style of the indicator',
-    },
-    direction: {
-      control: 'radio',
-      options: ['horizontal', 'vertical'],
-      description: 'Layout direction',
-    },
-    size: {
-      control: 'radio',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of indicator elements',
-    },
-    activeColor: {
-      control: 'color',
-      description: 'Color for active state',
-    },
-    inactiveColor: {
-      control: 'color',
-      description: 'Color for inactive state',
-    },
-    gap: {
-      control: { type: 'number', min: 0.5, max: 3, step: 0.5 },
-      description: 'Spacing between indicator items',
-    },
-    hasAnimation: {
-      control: 'boolean',
-      description: 'Enable/disable animations',
-    },
-    hasHoverEffect: {
-      control: 'boolean',
-      description: 'Enable/disable hover effects',
-    },
-  },
-};
 
 /**
  * Default dot style indicator

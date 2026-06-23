@@ -279,7 +279,7 @@ export function SplitOverlay({
       left: 0,
       right: 0,
       bottom: 0,
-      background: typeof overlay === 'number' ? `rgba(0,0,0,${overlay})` : overlay,
+      background: typeof overlay === 'number' ? `rgba(26,26,26,${overlay})` : overlay,
       pointerEvents: 'none',
     };
   };

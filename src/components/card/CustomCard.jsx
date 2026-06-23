@@ -162,7 +162,7 @@ const CustomCard = forwardRef(function CustomCard({
         zIndex: 1,
         minHeight: 200,
         justifyContent: 'flex-end',
-        background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
+        background: 'linear-gradient(to top, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0.4) 50%, transparent 100%)',
         color: 'common.white',
       };
     }
@@ -222,7 +222,6 @@ const CustomCard = forwardRef(function CustomCard({
       ref={ref}
       variant="outlined"
       padding="none"
-      radius="md"
       onClick={onClick}
       isInteractive={isInteractive}
       sx={{

@@ -232,7 +232,7 @@ export const MasonryGrid = {
       <Typography variant="h6" sx={ { fontWeight: 700, mb: 3 } }>
         Moodboards
       </Typography>
-      <Masonry columns={ { xs: 1, sm: 2, md: 3, lg: 4 } } spacing={ 2 }>
+      <Masonry columns={ { xs: 1, sm: 2, md: 3, lg: 4 } } spacing={ 4 }>
         { sampleMoodboards.map((board) => (
           <MoodboardCard
             key={ board.id }

@@ -19,25 +19,7 @@ export default {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: `
-## Card [MUI]
-
-관련 콘텐츠를 그룹화하여 표시하는 카드 컴포넌트입니다.
-
-### 구성 요소
-
-| 컴포넌트 | 설명 | 예시 |
-|----------|------|------|
-| Card | 카드 컨테이너 | \`<Card>...</Card>\` |
-| CardHeader | 제목, 부제목, 아바타 | 작성자 정보 |
-| CardMedia | 이미지, 비디오 | 썸네일 |
-| CardContent | 주요 콘텐츠 | 텍스트, 설명 |
-| CardActions | 액션 버튼 | 좋아요, 공유 |
-        `,
-      },
-    },
+    docs: {},
   },
   argTypes: {
     elevation: {

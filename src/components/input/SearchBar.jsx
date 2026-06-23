@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import TuneIcon from '@mui/icons-material/Tune';
+import { useTheme, alpha } from '@mui/material/styles';
 
 /**
  * SearchBar 컴포넌트
@@ -55,6 +56,7 @@ export function SearchBar({
   isFullWidth = false,
   sx,
 }) {
+  const theme = useTheme();
   const [isFocused, setIsFocused] = useState(false);
 
   /**
@@ -110,7 +112,7 @@ export function SearchBar({
           backgroundColor: 'background.paper',
           border: '1px solid',
           borderColor: isFocused ? 'primary.main' : 'divider',
-          boxShadow: isFocused ? '0 0 0 3px rgba(0, 0, 255, 0.1)' : 'none',
+          boxShadow: isFocused ? `0 0 0 3px ${alpha(theme.palette.primary.main, 0.15)}` : 'none',
           '&:hover': {
             borderColor: isFocused ? 'primary.main' : 'text.secondary',
           },

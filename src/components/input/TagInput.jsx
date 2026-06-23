@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import InputBase from '@mui/material/InputBase';
 import Typography from '@mui/material/Typography';
+import { useTheme, alpha } from '@mui/material/styles';
 
 /**
  * TagInput 컴포넌트
@@ -50,6 +51,7 @@ export function TagInput({
   isDisabled = false,
   sx,
 }) {
+  const theme = useTheme();
   const [inputValue, setInputValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -177,7 +179,7 @@ export function TagInput({
       backgroundColor: 'background.paper',
       border: '1px solid',
       borderColor: isFocused ? 'primary.main' : 'divider',
-      boxShadow: isFocused ? '0 0 0 3px rgba(0, 0, 255, 0.1)' : 'none',
+      boxShadow: isFocused ? `0 0 0 3px ${alpha(theme.palette.primary.main, 0.15)}` : 'none',
       '&:hover': {
         borderColor: isFocused ? 'primary.main' : 'text.secondary',
       },

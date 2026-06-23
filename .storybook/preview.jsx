@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import { defaultTheme } from '../src/styles/themes';
+import { zmathTheme } from '../src/styles/themes';
 
 // Google Fonts 로드 (Material Symbols + 기본 폰트)
 const googleFonts = [
@@ -63,9 +63,9 @@ const preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={zmathTheme}>
         <CssBaseline />
-        <div style={{ width: '100%', paddingTop: '40px' }}>
+        <div style={{ width: '100%', minHeight: '100vh', backgroundColor: '#FAFAF9' }}>
           <Story />
         </div>
       </ThemeProvider>
