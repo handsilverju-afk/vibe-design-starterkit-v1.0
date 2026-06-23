@@ -2,7 +2,13 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -15,6 +21,21 @@ import { ZmathFractionGamePage } from './stories/page/ZmathFractionGamePage.stor
 import { ZmathLogo } from './components/navigation/ZmathGNB';
 import ProfileAvatar from './components/game/ProfileAvatar';
 import { resolveIpProfile } from './utils/ipProfile';
+
+// ─── 초등6 준비중 레이어팝업 ──────────────────────────
+function Elem6Dialog({ open, onClose }) {
+  return (
+    <Dialog open={ open } onClose={ onClose }>
+      <DialogTitle>초등 6학년</DialogTitle>
+      <DialogContent>
+        <DialogContentText>초등 6학년 콘텐츠는 현재 준비중입니다.</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={ onClose } variant="contained">확인</Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
 
 // ─── 모바일/태블릿 대체 화면 ───────────────────────────
 // position: fixed → body min-width 제약 우회, 실제 뷰포트 전체 차지
@@ -90,6 +111,7 @@ function ProfileRoute() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const initialTab = searchParams.get('tab') ?? 'solved';
+  const [elem6Open, setElem6Open] = useState(false);
 
   const handleNavigate = (page) => {
     if (page === 'home') navigate('/');
@@ -99,26 +121,33 @@ function ProfileRoute() {
   };
 
   return (
-    <ZmathProfilePage
-      initialTab={ initialTab }
-      onTabChange={ (tab) => navigate(`/profile?tab=${tab}`, { replace: true }) }
-      onNavigate={ handleNavigate }
-      onGameClick={ (key) => navigate(`/game/${key}`) }
-      onElementary6={ () => window.alert('초등 6학년 콘텐츠는 준비중입니다.') }
-    />
+    <>
+      <ZmathProfilePage
+        initialTab={ initialTab }
+        onTabChange={ (tab) => navigate(`/profile?tab=${tab}`, { replace: true }) }
+        onNavigate={ handleNavigate }
+        onGameClick={ (key) => navigate(`/game/${key}`) }
+        onElementary6={ () => setElem6Open(true) }
+      />
+      <Elem6Dialog open={ elem6Open } onClose={ () => setElem6Open(false) } />
+    </>
   );
 }
 
 function FractionGameRoute() {
   const navigate = useNavigate();
+  const [elem6Open, setElem6Open] = useState(false);
   return (
-    <ZmathFractionGamePage
-      onGoHome={ () => navigate('/') }
-      onGoGrades={ () => navigate('/games') }
-      onBack={ (catId) => navigate(`/games${catId ? `?cat=${catId}` : ''}`) }
-      onGoProfile={ () => navigate('/profile') }
-      onElementary6={ () => window.alert('초등 6학년 콘텐츠는 준비중입니다.') }
-    />
+    <>
+      <ZmathFractionGamePage
+        onGoHome={ () => navigate('/') }
+        onGoGrades={ () => navigate('/games') }
+        onBack={ (catId) => navigate(`/games${catId ? `?cat=${catId}` : ''}`) }
+        onGoProfile={ () => navigate('/profile') }
+        onElementary6={ () => setElem6Open(true) }
+      />
+      <Elem6Dialog open={ elem6Open } onClose={ () => setElem6Open(false) } />
+    </>
   );
 }
 
