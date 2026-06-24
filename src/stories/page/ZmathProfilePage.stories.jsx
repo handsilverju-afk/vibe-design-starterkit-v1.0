@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ZmathFractionGamePage } from './ZmathFractionGamePage.stories';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
@@ -257,6 +258,31 @@ export function ZmathProfilePage({ onNavigate, onGameClick, onElementary6, initi
 }
 
 // ─────────────────────────────────
+// 스토리 래퍼 — 게임 상세 인내비게이션
+// ─────────────────────────────────
+function ProfileStoryWrapper() {
+  const [showGame, setShowGame] = useState(false);
+
+  if (showGame) {
+    return (
+      <ZmathFractionGamePage
+        onBack={ () => setShowGame(false) }
+        onGoHome={ () => setShowGame(false) }
+        onGoGrades={ () => setShowGame(false) }
+        onGoProfile={ () => setShowGame(false) }
+      />
+    );
+  }
+
+  return (
+    <ZmathProfilePage
+      onNavigate={ () => {} }
+      onGameClick={ () => setShowGame(true) }
+    />
+  );
+}
+
+// ─────────────────────────────────
 // 스토리 메타
 // ─────────────────────────────────
 export default {
@@ -267,5 +293,5 @@ export default {
 
 export const Default = {
   name: '프로필',
-  render: () => <ZmathProfilePage />,
+  render: () => <ProfileStoryWrapper />,
 };
