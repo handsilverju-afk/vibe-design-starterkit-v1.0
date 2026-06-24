@@ -87,7 +87,7 @@ function GameFeedback({ score, total, onRetry, onHome }) {
         </Typography>
 
         <Typography variant="body2" sx={{ color: '#FAFAF5', opacity: 0.8, mb: 4 }}>
-          {perfect ? '모든 문제를 맞혔어요!' : passed ? `${score}문제 정답` : '다시 한번 도전해보세요'}
+          {perfect ? '모든 과정을 끝냈어요!' : passed ? `${score}문제 정답` : '다시 한번 도전해보세요'}
         </Typography>
 
         {/* 버튼 */}
