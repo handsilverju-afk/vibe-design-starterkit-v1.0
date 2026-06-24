@@ -157,7 +157,7 @@ function AppRoutes() {
       <Route index element={<HomeRoute />} />
       <Route path="/games" element={<GamesRoute />} />
       <Route path="/profile" element={<ProfileRoute />} />
-      <Route path="/game/fraction-add" element={<FractionGameRoute />} />
+      <Route path="/game/:conceptKey" element={<FractionGameRoute />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
